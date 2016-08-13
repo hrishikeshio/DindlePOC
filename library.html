@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet template page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+    <link href="css/ratchet-theme-ios.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.min.js"></script>
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <a href="#myPopover">
+        <h1 class="title">Account: <span class="icon icon-caret"></span></h1>
+      </a>
+    </header>
+    <nav class="bar bar-tab">
+  <a class="tab-item active" href="library.html">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Library</span>
+  </a>
+  <a class="tab-item" href="index.html">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Store</span>
+  </a>
+  <a class="tab-item" href="publisher.html">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Publish</span>
+  </a>
+</nav>
+    <div class="content">
+      <p class="content-padded">These are the books you own. Click "List for sale" if you want to resale the book.</p>
+<ul class="table-view">
+  <li class="table-view-cell media">
+      <img class="media-object pull-left" src="http://placehold.it/120x180">
+      <div class="media-body">
+        Book1
+        <p><b>Author</b></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.<button class="btn btn-block btn-primary">Read</button><button class="btn btn-block btn-primary">List for sale</button></p>
+      </div>
+  </li>
+   <li class="table-view-cell media">
+      <img class="media-object pull-left" src="http://placehold.it/120x180">
+      <div class="media-body">
+        Book1
+        <p><b>Author</b></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.<button class="btn btn-block btn-primary">Read</button><button class="btn btn-block btn-primary">List for sale</button></p>
+      </div>
+  </li>  <li class="table-view-cell media">
+      <img class="media-object pull-left" src="http://placehold.it/120x180">
+      <div class="media-body">
+        Book1
+        <p><b>Author</b></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.<button class="btn btn-block btn-primary">Read</button><button class="btn btn-block btn-primary">List for sale</button></p>
+      </div>
+  </li>
+</ul>
+      </div>
+    </div>
+
+    <!-- POPOVER - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div id="myPopover" class="popover">
+      <header class="bar bar-nav">
+        <h1 class="title">Popover title</h1>
+      </header>
+      <ul class="table-view">
+        <li class="table-view-cell">Item1</li>
+        <li class="table-view-cell">Item2</li>
+        <li class="table-view-cell">Item3</li>
+      </ul>
+    </div>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  </body>
+</html>
