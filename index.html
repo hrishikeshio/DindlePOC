@@ -19,6 +19,7 @@
     <!-- Include the compiled Ratchet JS -->
     <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/ratchet.min.js"></script>
+    <script src="js/spin.min.js"></script>
       <script type="text/javascript" src="js/web3.js"></script>
 
   </head>
@@ -44,12 +45,42 @@
 </nav>
     <div class="content">
       <p class="content-padded">Welcome to Dindle. Please click buy to buy a book. It will take upto 2 minutes for the purchase to be complete.</p>
-<ul id="bookList" class="table-view">
+ <ul id="bookList" class="table-view"> 
 
+    <li><div id="loader">
+    </div> </li>
+</div>
 </ul>
     <script class="js-custom" src="js/app.js"></script>
     <script class="js-custom">
-$(document).ready(function() {listBooks();showBalances();});
+var opts = {
+  lines: 11 // The number of lines to draw
+, length: 17 // The length of each line
+, width: 8 // The line thickness
+, radius: 31 // The radius of the inner circle
+, scale: 0.25 // Scales overall size of the spinner
+, corners: 1 // Corner roundness (0..1)
+, color: '#000' // #rgb or #rrggbb or array of colors
+, opacity: 0.25 // Opacity of the lines
+, rotate: 0 // The rotation offset
+, direction: 1 // 1: clockwise, -1: counterclockwise
+, speed: 1 // Rounds per second
+, trail: 60 // Afterglow percentage
+, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+, zIndex: 2e9 // The z-index (defaults to 2000000000)
+, className: 'spinner' // The CSS class to assign to the spinner
+, top: '50%' // Top position relative to parent
+, left: '50%' // Left position relative to parent
+, shadow: false // Whether to render a shadow
+, hwaccel: false // Whether to use hardware acceleration
+, position: 'absolute' // Element positioning
+}
+var target = document.getElementById('loader');
+var spinner = new Spinner(opts).spin(target);
+$(document).ready(function() {
+  $('#loader').remove();
+  listBooks();
+  showBalances();});
     </script>
       </div>
     </div>
