@@ -1,5 +1,4 @@
-
-	var Web3 = require('web3');
+var Web3 = require('web3');
 if (typeof web3 !== 'undefined') {
   var web3 = new Web3(web3.currentProvider);
 } else {
@@ -21,16 +20,16 @@ function selectAccount(id)
      $(popovers).hide();
      $("div.backdrop").remove();
 	 web3.eth.defaultAccount = web3.eth.accounts[id];
-	 document.getElementById('account_id').innerText = String(id); //web3.eth.defaultAccount;
-	 document.getElementById('account_balance').innerText = Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100;
+	 $('#account_id').text(String(id)); //web3.eth.defaultAccount;
+	 $('#account_balance').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100));
 }
 
 function showBalances() {
-	document.getElementById('account_id').innerText = "0"; //web3.eth.defaultAccount;
-	document.getElementById('account_balance').innerText = Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100;
-	document.getElementById('account_balance0').innerText = Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"finney")*100)/100;
-	document.getElementById('account_balance1').innerText = Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"finney")*100)/100;
-	document.getElementById('account_balance2').innerText = Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[2]),"finney")*100)/100;
+	$('#account_id').text("0"); //web3.eth.defaultAccount;
+	$('#account_balance').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100));
+	$('#account_balance0').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"finney")*100)/100));
+	$('#account_balance1').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"finney")*100)/100));
+	$('#account_balance2').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[2]),"finney")*100)/100));
 
 }
 function listBooks()
@@ -63,7 +62,7 @@ function getListing(bookID,isUsed) {
 '"      <div class="media-body">'+
 		res[4]+
 '        <p><b>by '+res[5]+'</b></p>'+
-'        <p><button class="btn btn-primary"onclick="buy('+i+','+res[2].toNumber()+');">E '+res[2]+' Buy</button></p>'+
+'        <p><button class="btn btn-primary" id="buy_'+i+'" onclick="buy('+i+','+res[2].toNumber()+');">E '+res[2]+' Buy</button></p>'+
 '      </div><i>'+condition+'</i>'+
 '  </li>')
 
@@ -74,13 +73,14 @@ function buy(listingID,price) {
   var res = dindle.buy(listingID,{value: web3.toWei(price,'finney'), gas: 2000000});
   //console.log(res);
   //console.log(this);
-  //document.getElementById('result').innerText = res.toString(10);
-  $(".content-padded").append('<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
+  //$('#result').html = res.toString(10);
+   $('#buy_'+listingID).prop("disabled",true);
+   $(".content-padded").append('<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
 }
 
 
 
 $( document ).ready(function() {
-showBalances();
-listBooks();
+// showBalances();
+// listBooks();
 });

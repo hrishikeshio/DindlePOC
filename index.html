@@ -78,9 +78,10 @@ var opts = {
 var target = document.getElementById('loader');
 var spinner = new Spinner(opts).spin(target);
 $(document).ready(function() {
-  $('#loader').remove();
   listBooks();
-  showBalances();});
+  showBalances();
+$('#loader').remove();
+});
     </script>
       </div>
     </div>
