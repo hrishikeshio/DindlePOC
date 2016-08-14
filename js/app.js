@@ -1,8 +1,8 @@
 var Web3 = require('web3');
 if (typeof web3 !== 'undefined') {
-  var web3 = new Web3(web3.currentProvider);
+	var web3 = new Web3(web3.currentProvider);
 } else {
-var web3 = new Web3(new Web3.providers.HttpProvider("http://65.52.189.129:8545"));
+	var web3 = new Web3(new Web3.providers.HttpProvider("http://65.52.189.129:8545"));
 
 }
 web3.eth.defaultAccount = web3.eth.accounts[0];
@@ -14,17 +14,17 @@ var i=0;
 
 function selectAccount(id)
 {
-	 var popovers = $('#myPopover');
-     $(popovers).removeClass('visible');
-     $(popovers).removeClass('active');
-     $(popovers).hide();
-     $("div.backdrop").remove();
-	 web3.eth.defaultAccount = web3.eth.accounts[id];
+	var popovers = $('#myPopover');
+	$(popovers).removeClass('visible');
+	$(popovers).removeClass('active');
+	$(popovers).hide();
+	$("div.backdrop").remove();
+	web3.eth.defaultAccount = web3.eth.accounts[id];
 	 $('#account_id').text(String(id)); //web3.eth.defaultAccount;
 	 $('#account_balance').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100));
-}
+	}
 
-function showBalances() {
+	function showBalances() {
 	$('#account_id').text("0"); //web3.eth.defaultAccount;
 	$('#account_balance').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount),"finney")*100)/100));
 	$('#account_balance0').text(String(Math.round(web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"finney")*100)/100));
@@ -34,19 +34,19 @@ function showBalances() {
 }
 function listBooks()
 {
-  var totalBooks = dindle.getNumberOfListings().toNumber();
+	var totalBooks = dindle.getNumberOfListings().toNumber();
   //console.log(totalBooks);
-    res=dindle.getListing(i);
+    //res=dindle.getListing(i);
     // //console.log(res);
     //if (res[1]==true){
-    for(var i=0; i<totalBooks; i++) {
-    getListing(i);
-  
-}
-}
-function getListing(bookID,isUsed) {
+    	for(var i=0; i<totalBooks; i++) {
+    		getListing(i);
 
-    var res = dindle.getListing(bookID);
+    	}
+    }
+    function getListing(listingID,isUsed) {
+
+    	var res = dindle.getListing(listingID);
     //   document.getElementById("books").insertAdjacentHTML( 'afterbegin', '<div id="booklist" class="col-sm-2 col-lg-2 col-md-2"/><img height="200px" width="120px" src="'+
     // res[2]+'" alt=""><input type="button" class="btn" onclick="listy('+bookID+');" value="List for sale"></div>' );
     //console.log(res);
@@ -58,27 +58,59 @@ function getListing(bookID,isUsed) {
     	condition="Used";
     }
     $("#bookList").append('<li class="table-view-cell media">'+
-      '<img class="media-object pull-left bookCover" src="'+res[6]+
-'"      <div class="media-body">'+
-		res[4]+
-'        <p><b>by '+res[5]+'</b></p>'+
-'        <p><button class="btn btn-primary" id="buy_'+i+'" onclick="buy('+i+','+res[2].toNumber()+');">E '+res[2]+' Buy</button></p>'+
-'      </div><i>'+condition+'</i>'+
-'  </li>')
+    	'<img class="media-object pull-left bookCover" src="'+res[6]+
+    	'"      <div class="media-body">'+
+    	res[4]+
+    	'        <p><b>by '+res[5]+'</b></p>'+
+    	'        <p><button class="btn btn-primary" id="buy_'+listingID+'" onclick="buy('+listingID+','+res[2].toNumber()+');">E '+res[2]+' Buy</button></p>'+
+    	'      </div><i>'+condition+'</i>'+
+    	'  </li>')
 
 }
 
 function buy(listingID,price) {
 	//console.log(web3.toWei(price,'finney'));
-  var res = dindle.buy(listingID,{value: web3.toWei(price,'finney'), gas: 2000000});
+	var res = dindle.buy(listingID,{value: web3.toWei(price,'finney'), gas: 2000000});
   //console.log(res);
   //console.log(this);
   //$('#result').html = res.toString(10);
-   $('#buy_'+listingID).prop("disabled",true);
-   $(".content-padded").append('<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
+  $('#buy_'+listingID).prop("disabled",true);
+  $(".content-padded").append('<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
 }
 
+function listLibraryBooks()
+{  
+	$("#bookList").html('');
+	var totalBooks = dindle.getNumberOfBooks().toNumber();
+	for(var i=0; i<totalBooks; i++) {
+		license=dindle.verifyLicense(i).toNumber()>0;
+		console.log(license);
+		if (license) {
+			var res = dindle.getBook(i);
+			console.log(res);
+			console.log(i);
+			var readerURL="reader.html?bookID="+String(i)
+			console.log(readerURL);
+			$("#bookList").append('<li class="table-view-cell media">'+
+				'      <img class="bookCover media-object pull-left" src="'+res[2]+'">'+
+				'      <div class="media-body">'+
+				res[0]+
+				'        <p><b>by '+res[1]+'</b></p>'+
+				'        <p>'+
+				'<a href="'+readerURL+'" class="btn btn-block btn-primary" data-ignore="push">Read</a>'+
+				'<a class="btn btn-block btn-primary">List for sale</a></p>'+
+				'      </div>'+
+				'  </li>');
 
+  // '<div id="booklist" class="col-sm-2 col-lg-2 col-md-2"/><a "><img height="200px" width="120px" alt=""></a> </div>' );
+  //  document.getElementById('result_verifyLicense').innerText = res.toString(10);
+}
+}
+}
+
+function getURLParameter(name) {
+	return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
 
 $( document ).ready(function() {
 // showBalances();
