@@ -6,7 +6,10 @@
 body {
   overflow: hidden;
 }
-
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
 #main {
   position: absolute;
   width: 100%;

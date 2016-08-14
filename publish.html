@@ -14,26 +14,31 @@
     <!-- Include the compiled Ratchet CSS -->
     <link href="css/ratchet.css" rel="stylesheet">
     <link href="css/ratchet-theme-ios.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 
     <!-- Include the compiled Ratchet JS -->
+    <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/ratchet.min.js"></script>
+    <script src="js/spin.min.js"></script>
+      <script type="text/javascript" src="js/web3.js"></script>
+
   </head>
   <body>
     <header class="bar bar-nav">
       <a href="#myPopover">
-        <h1 class="title">Account: <span class="icon icon-caret"></span></h1>
+        <h1 class="title">Account<i id="account_id">.</i> Balance: E <i id="account_balance">.</i> <span class="icon icon-caret"></span></h1>
       </a>
     </header>
-    <nav class="bar bar-tab">
-  <a class="tab-item" href="library.html">
+    <nav class="bar bar-tab active">
+  <a class="tab-item active" href="library.html">
     <span class="icon icon-home"></span>
     <span class="tab-label">Library</span>
   </a>
-  <a class="tab-item" href="index.html">
+  <a class="tab-item " href="index.html">
     <span class="icon icon-person"></span>
     <span class="tab-label">Store</span>
   </a>
-  <a class="tab-item active" href="publisher.html">
+  <a class="tab-item" href="publisher.html">
     <span class="icon icon-star-filled"></span>
     <span class="tab-label">Publish</span>
   </a>
@@ -43,46 +48,67 @@
 <form class="input-group">
   <div class="input-row">
     <label>Book Name</label>
-    <input type="text" placeholder="Alice in Wonderland">
+    <input id="bookName" type="text" placeholder="Alice in Wonderland" value="Moby Dick">
   </div>
   <div class="input-row">
     <label>Book Author</label>
-    <input type="email" placeholder="Author name">
+    <input id="authorName" type="text" placeholder="Author name" value="Herman Melville">
   </div>
   <div class="input-row">
     <label>Price in USD</label>
-    <input type="text" placeholder="5">
+    <input id="price" type="text" placeholder="5" value="10">
   </div>
     <div class="input-row" style="height:50px">
     <label>Book cover URL</label>
-    <input type="text" placeholder="">
+    <input id="imageURL" type="text" placeholder="" value="https://midnightinthelibrary.files.wordpress.com/2013/06/moby-dick-rockwell-kent-illus.jpg">
   </div>
     <div class="input-row" style="height:50px">
     <label>Book's epub URL</label>
-    <input type="text" placeholder="">
+    <input id="bookURL" type="text" placeholder="" value="http://65.52.189.129/epub/moby-dick.epub">
   </div>
     <div class="input-row" style="height:70px">
     <label>Publisher's Address (Optional)</label>
-    <input type="text" placeholder="0x00000000000">
+    <input id="publisher" type="text" placeholder="0x00000000000" value="">
   </div>
   <br/>
-    <a href="publisher.html" class="btn btn-primary btn-block">Publish</a>
-</form>
-      </div>
-    </div>
+    <a id="publish" class="btn btn-primary btn-block" onclick="publish()">Publish</a>
+</form> <script class="js-custom" src="js/app.js"></script>
+    <script class="js-custom">
+$(document).ready(function() {
+  showBalances();
+  $('#publisher').val(web3.eth.accounts[2]);
+});
+function refress(i) {
+  selectAccount(i);
+
+}
+    </script>
+
 
     <!-- POPOVER - - - - - - - - - - - - - - - - - - - - - - - -->
     <div id="myPopover" class="popover">
       <header class="bar bar-nav">
-        <h1 class="title">Popover title</h1>
+        <h1 class="title">Please select an account</h1>
       </header>
       <ul class="table-view">
-        <li class="table-view-cell">Item1</li>
-        <li class="table-view-cell">Item2</li>
-        <li class="table-view-cell">Item3</li>
+        <li class="table-view-cell" onclick="refress(0)">Account<i id="account_id">0</i> E <i id="account_balance0">.</i> </li>
+        <li class="table-view-cell" onclick="refress(1)">Account<i id="account_id">1</i> E <i id="account_balance1">.</i> </li>
+        <li class="table-view-cell" onclick="refress(2)">Account<i id="account_id">2</i> E <i id="account_balance2">.</i> </li>
       </ul>
     </div>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+  <script>
+    window.addEventListener('push', function(){
+        var scriptsList = document.querySelectorAll('script.js-custom');
+        for(var i = 0; i < scriptsList.length; ++i) {
+            eval(scriptsList[i].innerHTML);
+        }
+    });
+</script>
+  </body>
+
+
+</html>
   </body>
 </html>
