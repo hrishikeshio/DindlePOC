@@ -2,7 +2,7 @@ var Web3 = require('web3');
 if (typeof web3 !== 'undefined') {
 	var web3 = new Web3(web3.currentProvider);
 } else {
-	var web3 = new Web3(new Web3.providers.HttpProvider("http://65.52.189.129:8545"));
+	var web3 = new Web3(new Web3.providers.HttpProvider("http://87.106.111.132:8545"));
 
 }
 web3.eth.defaultAccount = web3.eth.accounts[0];
@@ -84,13 +84,13 @@ function listLibraryBooks()
 	var totalBooks = dindle.getNumberOfBooks().toNumber();
 	for(var i=0; i<totalBooks; i++) {
 		license=dindle.verifyLicense(i).toNumber()>0;
-		console.log(license);
+		//console.log(license);
 		if (license) {
 			var res = dindle.getBook(i);
-			console.log(res);
-			console.log(i);
+			//console.log(res);
+			//console.log(i);
 			var readerURL="reader.html?bookID="+String(i)
-			console.log(readerURL);
+			//console.log(readerURL);
 			$("#bookList").append('<li class="table-view-cell media">'+
 				'      <img class="bookCover media-object pull-left" src="'+res[2]+'">'+
 				'      <div class="media-body">'+
@@ -124,9 +124,9 @@ function publish() {
   var publisher = web3.toBigNumber(document.getElementById("publisher").value);
 
   var res = dindle.register(bookName, authorName, imageURL, bookURL, price, publisher, {gas: 1000000});
-  console.log(res);
+ //console.log(res);
   $('#publish').addClass('disabled');
-    console.log($('#publisher').val());
+   //console.log($('#publisher').val());
 //  document.getElementById('result1').innerText = res.toString(10);
 //    document.body.insertAdjacentHTML('afterbegin', '<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
 }
