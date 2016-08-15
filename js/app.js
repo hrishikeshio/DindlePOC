@@ -97,7 +97,7 @@ function listLibraryBooks()
 				res[0]+
 				'        <p><b>by '+res[1]+'</b></p>'+
 				'        <p>'+
-				'<a href="'+readerURL+'" class="btn btn-block btn-primary" data-ignore="push">Read</a>'+
+				'<a href="'+readerURL+'" class="btn btn-block btn-primary">Read</a>'+
 				'<a class="btn btn-block btn-primary">List for sale</a></p>'+
 				'      </div>'+
 				'  </li>');
