@@ -88,6 +88,9 @@ function refress(i) {
 listLibraryBooks();
 
 }
+$('#ac0').click(function(){refress(0);});
+$('#ac1').click(function(){refress(1);});
+$('#ac2').click(function(){refress(2);});
     </script>
 
   </div>
@@ -97,9 +100,9 @@ listLibraryBooks();
         <h1 class="title">Please select an account</h1>
       </header>
       <ul class="table-view">
-        <li class="table-view-cell" onclick="refress(0)">Account<i id="account_id">0</i> E <i id="account_balance0">.</i> </li>
-        <li class="table-view-cell" onclick="refress(1)">Account<i id="account_id">1</i> E <i id="account_balance1">.</i> </li>
-        <li class="table-view-cell" onclick="refress(2)">Account<i id="account_id">2</i> E <i id="account_balance2">.</i> </li>
+        <li class="table-view-cell" id='ac0'>Account<i id="account_id">0</i> E <i id="account_balance0">.</i> </li>
+        <li class="table-view-cell"  id='ac1'>Account<i id="account_id">1</i> E <i id="account_balance1">.</i> </li>
+        <li class="table-view-cell"  id='ac2'>Account<i id="account_id">2</i> E <i id="account_balance2">.</i> </li>
       </ul>
     </div>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
