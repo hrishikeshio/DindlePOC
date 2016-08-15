@@ -30,8 +30,8 @@ contract Dindle{
 	}
 
 	function Dindle (uint platformCommission) noether  {
-		register("The Adventures of Sherlock Holmes","Aurthur Conan Doyle","http://i.imgur.com/NX6skNal.png","http://87.106.111.132/epub/sherlock.epub",1,0x0);
-		register("Alice in Wonderland","Lewis Carroll","http://i.imgur.com/0mT5lrw.png","http://87.106.111.132/epub/alice.epub",3,0x0);
+		register("The Adventures of Sherlock Holmes","Aurthur Conan Doyle","http://i.imgur.com/NX6skNal.png","http://87.106.111.132/epub/sherlock.epub",10,0x0);
+		register("Alice in Wonderland","Lewis Carroll","http://i.imgur.com/0mT5lrw.png","http://87.106.111.132/epub/alice.epub",20,0x0);
 		list(1);
 	}
 

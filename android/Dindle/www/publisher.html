@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet template page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+    <link href="css/ratchet-theme-ios.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/ratchet.min.js"></script>
+    <script src="js/spin.min.js"></script>
+    <script type="text/javascript" src="js/web3.js"></script>
+    <script src="https://cdn.jsdelivr.net/epub.js/0.2.11/epub.min.js"></script>
+    <script src="js/zip.min.js"></script>
+
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <a href="#myPopover">
+        <h1 class="title">Account: <span class="icon icon-caret"></span></h1>
+      </a>
+    </header>
+    <nav class="bar bar-tab">
+  <a class="tab-item" href="library.html">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Library</span>
+  </a>
+  <a class="tab-item" href="index.html">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Store</span>
+  </a>
+  <a class="tab-item active" href="publisher.html">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Publish</span>
+  </a>
+</nav>
+    <div class="content">
+      <p class="content-padded">Publisher dashboard. Click "Publish New book" to publish a new book.</p>
+<a class="btn btn-block btn-primary" href="publish.html">
+  Publish New Book
+</a>
+      </div>
+    </div>
+
+    <!-- POPOVER - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div id="myPopover" class="popover">
+      <header class="bar bar-nav">
+        <h1 class="title">Popover title</h1>
+      </header>
+      <ul class="table-view">
+        <li class="table-view-cell">Item1</li>
+        <li class="table-view-cell">Item2</li>
+        <li class="table-view-cell">Item3</li>
+      </ul>
+    </div>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  </body>
+</html>

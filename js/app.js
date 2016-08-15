@@ -85,22 +85,32 @@ function listLibraryBooks()
 	for(var i=0; i<totalBooks; i++) {
 		license=dindle.verifyLicense(i).toNumber()>0;
 		//console.log(license);
+
 		if (license) {
 			var res = dindle.getBook(i);
 			//console.log(res);
 			//console.log(i);
 			var readerURL="reader_contained.html?bookID="+String(i)
 			//console.log(readerURL);
-			$("#bookList").append('<li class="table-view-cell media">'+
-				'      <img class="bookCover media-object pull-left" src="'+res[2]+'">'+
-				'      <div class="media-body">'+
-				res[0]+
-				'        <p><b>by '+res[1]+'</b></p>'+
-				'        <p>'+
-				'<a href="'+readerURL+'" class="btn btn-block btn-primary">Read</a>'+
-				'<a class="btn btn-block btn-primary">List for sale</a></p>'+
+			var appendage='<li class="table-view-cell media">'+
+			'      <img class="bookCover media-object pull-left" src="'+res[2]+'">'+
+			'      <div class="media-body">'+
+			res[0]+
+			'        <p><b>by '+res[1]+'</b></p>'+
+			'        <p>'+
+			'<a href="'+readerURL+'" class="btn btn-block btn-primary">Read</a>'
+			if(dindle.verifyLicense(i).toNumber()==1) {
+				appendage+='<a class="btn btn-block btn-primary"  onclick="listy('+i+');">List for sale</a></p>'+
 				'      </div>'+
-				'  </li>');
+				'  </li>';
+			} else {
+				appendage+='<a class="btn btn-block btn-primary disabled">Listed for sale</a></p>'+
+				'      </div>'+
+				'  </li>';
+			}
+
+			$("#bookList").append(appendage);
+			
 
   // '<div id="booklist" class="col-sm-2 col-lg-2 col-md-2"/><a "><img height="200px" width="120px" alt=""></a> </div>' );
   //  document.getElementById('result_verifyLicense').innerText = res.toString(10);
@@ -125,10 +135,14 @@ function publish() {
 
   var res = dindle.register(bookName, authorName, imageURL, bookURL, price, publisher, {gas: 1000000});
  //console.log(res);
-  $('#publish').addClass('disabled');
+ $('#publish').addClass('disabled');
    //console.log($('#publisher').val());
 //  document.getElementById('result1').innerText = res.toString(10);
 //    document.body.insertAdjacentHTML('afterbegin', '<div id="message"><div style="padding: 5px;"><div class="alert alert-success"><strong>Success!</strong>');
+}
+function listy(bookID){
+	res=dindle.list(bookID);
+ //console.log(res);
 }
 
 $( document ).ready(function() {

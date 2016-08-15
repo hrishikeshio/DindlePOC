@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet template page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+    <link href="css/ratchet-theme-ios.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/ratchet.min.js"></script>
+    <script src="js/spin.min.js"></script>
+    <script type="text/javascript" src="js/web3.js"></script>
+    <script src="https://cdn.jsdelivr.net/epub.js/0.2.11/epub.min.js"></script>
+    <script src="js/zip.min.js"></script>
+
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <a href="#myPopover">
+        <h1 class="title">Account<i id="account_id">.</i> Balance: E <i id="account_balance">.</i> <span class="icon icon-caret"></span></h1>
+      </a>
+    </header>
+    <nav class="bar bar-tab active">
+  <a class="tab-item active" href="library.html">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Library</span>
+  </a>
+  <a class="tab-item " href="index.html">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Store</span>
+  </a>
+  <a class="tab-item" href="publisher.html">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Publish</span>
+  </a>
+</nav>
+    <div class="content">
+    <div id="loader">
+    </div> 
+      <p class="content-padded">These are the books you own. Click "List for sale" if you want to resale the book.</p>
+ <ul id="bookList" class="table-view">
+</ul>
+    
+   <script class="js-custom" src="js/app.js"></script>
+    <script class="js-custom">
+var opts = {
+  lines: 11 // The number of lines to draw
+, length: 17 // The length of each line
+, width: 8 // The line thickness
+, radius: 31 // The radius of the inner circle
+, scale: 0.25 // Scales overall size of the spinner
+, corners: 1 // Corner roundness (0..1)
+, color: '#000' // #rgb or #rrggbb or array of colors
+, opacity: 0.25 // Opacity of the lines
+, rotate: 0 // The rotation offset
+, direction: 1 // 1: clockwise, -1: counterclockwise
+, speed: 1 // Rounds per second
+, trail: 60 // Afterglow percentage
+, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+, zIndex: 2e9 // The z-index (defaults to 2000000000)
+, className: 'spinner' // The CSS class to assign to the spinner
+, top: '50%' // Top position relative to parent
+, left: '50%' // Left position relative to parent
+, shadow: false // Whether to render a shadow
+, hwaccel: false // Whether to use hardware acceleration
+, position: 'absolute' // Element positioning
+}
+var target = document.getElementById('loader');
+var spinner = new Spinner(opts).spin(target);
+$(document).ready(function() {
+listLibraryBooks();
+  showBalances();
+$('#loader').remove();
+});
+function refress(i) {
+  selectAccount(i);
+listLibraryBooks();
+
+}
+$('#ac0').click(function(){refress(0);});
+$('#ac1').click(function(){refress(1);});
+$('#ac2').click(function(){refress(2);});
+    </script>
+
+  </div>
+    <!-- POPOVER - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div id="myPopover" class="popover">
+      <header class="bar bar-nav">
+        <h1 class="title">Please select an account</h1>
+      </header>
+      <ul class="table-view">
+        <li class="table-view-cell" id='ac0'>Account<i id="account_id">0</i> E <i id="account_balance0">.</i> </li>
+        <li class="table-view-cell"  id='ac1'>Account<i id="account_id">1</i> E <i id="account_balance1">.</i> </li>
+        <li class="table-view-cell"  id='ac2'>Account<i id="account_id">2</i> E <i id="account_balance2">.</i> </li>
+      </ul>
+    </div>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <script>
+    window.addEventListener('push', function(){
+        var scriptsList = document.querySelectorAll('script.js-custom');
+        for(var i = 0; i < scriptsList.length; ++i) {
+            eval(scriptsList[i].innerHTML);
+        }
+    });
+</script>
+  </body>
+
+
+</html>
+  </body>
+</html>

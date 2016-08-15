@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet template page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/epub.js/0.2.11/epub.min.js"></script>
+
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <a href="#myPopover">
+        <h1 class="title">Account<i id="account_id">.</i> Balance: E <i id="account_balance">.</i> <span class="icon icon-caret"></span></h1>
+      </a>
+    </header>
+    <nav class="bar bar-tab active">
+  <a class="tab-item" href="library.html">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Library</span>
+  </a>
+  <a class="tab-item " href="index.html">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Store</span>
+  </a>
+  <a class="tab-item" href="publisher.html">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Publish</span>
+  </a>
+</nav>
+    <div id="content" class="content">
+
+
+</div>
+<script>
+  var book = ePub("http://65.52.189.129/epub/moby-dick.epub");
+  var $el = document.getElementById("content");
+  book.renderTo($el);
+</script>
+</body>
