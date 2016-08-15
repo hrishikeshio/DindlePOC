@@ -38,8 +38,8 @@
   </a>
 </nav>
   <div class="content">
-          <div id="prev" onclick="Book.prevPage();" class="arrow">‹</div>
-          <div id="next" onclick="Book.nextPage();" class="arrow">›</div>
+          <div id="prev" onclick="prev();" class="arrow">‹</div>
+          <div id="next" onclick="next()" class="arrow">›</div>
           <!-- <div id="back" onclick="library();" class="back">Back</div> -->
           <div id="area"></div>
              <script class="js-custom" src="js/app.js"></script>
@@ -61,6 +61,9 @@
                         function library() {
               window.open("library.html",'_self',false);
             }
+
+            function next(){Book.nextPage();}
+            function prev(){Book.prevPage();}
         </script>
         </div>
 
