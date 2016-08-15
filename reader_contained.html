@@ -54,7 +54,7 @@
             console.log(bookID);
             bookURL=dindle.getBook(bookID)[3];
             console.log(bookURL);
-            Book = ePub(bookURL);
+            Book = ePub(bookURL,{ restore: true });
             // showBalances();
             Book.renderTo("area");
             function next(){Book.nextPage();}
