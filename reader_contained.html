@@ -54,7 +54,8 @@
             console.log(bookID);
             bookURL=dindle.getBook(bookID)[3];
             console.log(bookURL);
-            Book = ePub(bookURL,{ restore: true });
+           var width = $('#area').width()
+            Book = ePub(bookURL,{ restore: true ,width: width, height: 400 });
             // showBalances();
             Book.renderTo("area");
             function next(){Book.nextPage();}
