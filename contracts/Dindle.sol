@@ -30,8 +30,8 @@ contract Dindle{
 	}
 
 	function Dindle (uint platformCommission) noether  {
-		register("The Adventures of Sherlock Holmes","Aurthur Conan Doyle","http://images.contentreserve.com/ImageType-100/1785-1/%7B24168643-5E3F-497D-A948-8BEC7B3D80CC%7DImg100.jpg","http://65.52.189.129/epub/sherlock.epub",1,0x0);
-		register("Alice in Wonderland","Lewis Carroll","https://www.panmacmillan.com/panmacmillancorporatesite/media/panmacmillan/Cover%20Images/Lewis-Carroll/9781447279990Alice-s%20Adventures%20in%20Wonderland.jpg?ext=jpg","http://65.52.189.129/epub/alice.epub",3,0x0);
+		register("The Adventures of Sherlock Holmes","Aurthur Conan Doyle","http://images.contentreserve.com/ImageType-100/1785-1/%7B24168643-5E3F-497D-A948-8BEC7B3D80CC%7DImg100.jpg","http://87.106.111.132/epub/sherlock.epub",1,0x0);
+		register("Alice in Wonderland","Lewis Carroll","https://www.panmacmillan.com/panmacmillancorporatesite/media/panmacmillan/Cover%20Images/Lewis-Carroll/9781447279990Alice-s%20Adventures%20in%20Wonderland.jpg?ext=jpg","http://87.106.111.132/epub/alice.epub",3,0x0);
 		list(1);
 	}
 
@@ -172,6 +172,3 @@ contract Dindle{
 		numLicensees=book.numLicensees;
 	}
 }
-
-//1739.3762205121413,982.41498,0
-//1730.9860205121413,981.06148,0

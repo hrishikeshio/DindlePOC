@@ -9,7 +9,7 @@ web3.eth.defaultAccount = web3.eth.accounts[0];
 var ABI=[{"constant":true,"inputs":[{"name":"bookID","type":"uint256"}],"name":"verifyLicense","outputs":[{"name":"license","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"listingID","type":"uint256"}],"name":"getListing","outputs":[{"name":"bookID","type":"uint256"},{"name":"isNew","type":"bool"},{"name":"price","type":"uint256"},{"name":"seller","type":"address"},{"name":"bookName","type":"string"},{"name":"authorName","type":"string"},{"name":"imageURL","type":"string"},{"name":"bookURL","type":"string"},{"name":"numOwners","type":"uint256"},{"name":"numLicensees","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"books","outputs":[{"name":"bookName","type":"string"},{"name":"authorName","type":"string"},{"name":"imageURL","type":"string"},{"name":"bookURL","type":"string"},{"name":"price","type":"uint256"},{"name":"owner","type":"address"},{"name":"publisher","type":"address"},{"name":"numOwners","type":"uint256"},{"name":"numLicensees","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"bookID","type":"uint256"}],"name":"list","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"getNumberOfBooks","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"getNumberOfListings","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"listingID","type":"uint256"}],"name":"buyUsed","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"listingID","type":"uint256"}],"name":"buy","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"bookName","type":"string"},{"name":"authorName","type":"string"},{"name":"imageURL","type":"string"},{"name":"bookURL","type":"string"},{"name":"price","type":"uint256"},{"name":"publisher","type":"address"}],"name":"register","outputs":[{"name":"bookID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"bookID","type":"uint256"}],"name":"verifyOwnership","outputs":[{"name":"ownership","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"listings","outputs":[{"name":"bookID","type":"uint256"},{"name":"isNew","type":"bool"},{"name":"price","type":"uint256"},{"name":"seller","type":"address"}],"type":"function"},{"constant":true,"inputs":[{"name":"bookID","type":"uint256"}],"name":"getBook","outputs":[{"name":"bookName","type":"string"},{"name":"authorName","type":"string"},{"name":"imageURL","type":"string"},{"name":"bookURL","type":"string"},{"name":"price","type":"uint256"},{"name":"numOwners","type":"uint256"},{"name":"numLicensees","type":"uint256"},{"name":"owner","type":"address"},{"name":"publisher","type":"address"}],"type":"function"},{"inputs":[{"name":"platformCommission","type":"uint256"}],"type":"constructor"}]
 ;
 var Dindle = web3.eth.contract(ABI);
-var dindle = Dindle.at("0xb2f7a767fb750e9dcfaba3cc7c54eab5fb608563");	
+var dindle = Dindle.at("0x13dd543bd98d0826ca09909353bf6f8199186efb");	
 var i=0;
 
 function selectAccount(id)
@@ -89,7 +89,7 @@ function listLibraryBooks()
 			var res = dindle.getBook(i);
 			//console.log(res);
 			//console.log(i);
-			var readerURL="reader.html?bookID="+String(i)
+			var readerURL="reader_contained.html?bookID="+String(i)
 			//console.log(readerURL);
 			$("#bookList").append('<li class="table-view-cell media">'+
 				'      <img class="bookCover media-object pull-left" src="'+res[2]+'">'+

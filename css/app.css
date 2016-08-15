@@ -47,6 +47,7 @@ a.disabled {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  z-index: 9999;
 }
 
 .back {
